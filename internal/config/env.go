@@ -8,14 +8,14 @@ import (
 )
 
 type Config struct {
-	PORT   string
-	DB_URL string
+	PORT         string
+	DATABASE_URL string `mapstructure:"DATABASE_URL"`
 }
 
 func LoadConfig() (*Config, error) {
 	err := gotenv.Load()
 	if err != nil {
-		return nil, fmt.Errorf("Error to load .env")
+		return nil, fmt.Errorf("Error to load .env: %v ", err)
 	}
 	viper.SetDefault("PORT", "8080")
 	viper.BindEnv("DATABASE_URL")
@@ -24,10 +24,10 @@ func LoadConfig() (*Config, error) {
 	var cfg Config
 
 	if err := viper.Unmarshal(&cfg); err != nil {
-		return nil, fmt.Errorf("Error to get variables")
+		return nil, fmt.Errorf("Error to get variables ")
 	}
-	if cfg.DB_URL == "" {
-		return nil, fmt.Errorf("Empty vabiables")
+	if cfg.DATABASE_URL == "" {
+		return nil, fmt.Errorf("Empty vabiables ")
 	}
 	return &cfg, nil
 }

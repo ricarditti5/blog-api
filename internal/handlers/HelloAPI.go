@@ -1,4 +1,4 @@
-package services
+package handlers
 
 import (
 	"encoding/json"
@@ -7,7 +7,7 @@ import (
 
 func HelloAPI() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		helloServer := "Hello API"
+		helloServer := "Welcome to my blog api"
 
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)

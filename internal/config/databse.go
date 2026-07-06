@@ -8,7 +8,7 @@ import (
 )
 
 func InitDB(cfg *Config) (*pgxpool.Pool, error) {
-	pool, err := pgxpool.New(context.Background(), cfg.DB_URL)
+	pool, err := pgxpool.New(context.Background(), cfg.DATABASE_URL)
 	if err != nil {
 		return nil, fmt.Errorf("Error to conect to database: %v", err)
 	}
