@@ -15,13 +15,13 @@ import (
 func main() {
 	cfg, err := config.LoadConfig()
 	if err != nil {
-		fmt.Printf("Error to load config:%v ", err)
+		fmt.Printf("\nError to load config:%v ", err)
 		os.Exit(1)
 	}
 
 	pool, err := config.InitDB(cfg)
 	if err != nil {
-		fmt.Printf("Error to connect to database: %v", err)
+		fmt.Printf("\nError to connect to database: %v", err)
 		os.Exit(1)
 	}
 	repo := repository.NewPostRepo(pool)

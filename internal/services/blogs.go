@@ -17,7 +17,7 @@ func NewPostService(repo *repository.PostRepo) *PostService {
 
 func (s *PostService) CreatePost(ctx context.Context, t models.Posts) (models.Posts, error) {
 	if t.Title == "" {
-		fmt.Println("Title is required!")
+		return models.Posts{}, fmt.Errorf("Title is required!")
 	}
 	return s.repo.Create(ctx, t)
 }

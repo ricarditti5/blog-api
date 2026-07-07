@@ -15,7 +15,7 @@ type Config struct {
 func LoadConfig() (*Config, error) {
 	err := gotenv.Load()
 	if err != nil {
-		return nil, fmt.Errorf("Error to load .env: %v ", err)
+		return nil, fmt.Errorf("\nError to load .env: %v ", err)
 	}
 	viper.SetDefault("PORT", "8080")
 	viper.BindEnv("DATABASE_URL")
@@ -24,10 +24,10 @@ func LoadConfig() (*Config, error) {
 	var cfg Config
 
 	if err := viper.Unmarshal(&cfg); err != nil {
-		return nil, fmt.Errorf("Error to get variables ")
+		return nil, fmt.Errorf("\nError to get variables ")
 	}
 	if cfg.DATABASE_URL == "" {
-		return nil, fmt.Errorf("Empty vabiables ")
+		return nil, fmt.Errorf("\nEmpty vabiables ")
 	}
 	return &cfg, nil
 }
