@@ -34,5 +34,5 @@ func main() {
 	routes.RegisterRoutes(mux, ctx, h)
 
 	fmt.Println("Server Runnig...")
-	http.ListenAndServe(":8080", mux)
+	http.ListenAndServe(":"+cfg.PORT, mux)
 }

@@ -8,3 +8,9 @@ type Posts struct {
 	Category string   `json:"category"`
 	Tags     []string `json:"tags"`
 }
+
+type PostFilter struct {
+	Query    string
+	Category string
+	Tag      string
+}
